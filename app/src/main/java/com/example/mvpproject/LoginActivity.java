@@ -74,12 +74,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     }
 
     @Override
-    public void navigateTo(String token, String superUser) {
-        Toast.makeText(this,"Pase UwU",Toast.LENGTH_LONG).show();
-        logger.log(Level.SEVERE,"TOKEN: "+token+" Super: "+ superUser);
+    public void navigateTo(String token, int user) {
+        logger.log(Level.SEVERE,"TOKEN: "+token+" Super: "+ user);
         Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
         intent.putExtra("token",token);
-        intent.putExtra("super",superUser);
+        intent.putExtra("id",String.valueOf(user));
         startActivity(intent);
     }
 

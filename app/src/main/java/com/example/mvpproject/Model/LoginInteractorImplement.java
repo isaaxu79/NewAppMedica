@@ -1,5 +1,6 @@
 package com.example.mvpproject.Model;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.text.TextUtils;
 
@@ -37,20 +38,28 @@ public class LoginInteractorImplement implements LoginInteractor {
                 RequestParams params = new RequestParams();
                 params.put("username",username);
                 params.put("password",password);
+                logger.log(Level.SEVERE, "estoy entrando");
                 API_REST.login(params, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                         try{
                             JSONObject object = new JSONObject(new String(responseBody));
-                            String tkn =  object.getString("token");
-                            String superUser = object.getString("super");
-                            listener.OnSucess(tkn,superUser);
+                            String tkn = object.getString("token");
+                            int id = Integer.parseInt(object.getString("id"));
+                            String nombre = object.getString("nombre");
+                            String apellidop = object.getString("apellidop");
+                            String apellidom = object.getString("apellidom");
+                            String especialidad = object.getString("especialidad");
+                            String tipo = object.getString("type");
+                            String superUser = "sa";
+                            listener.OnSucess(tkn,id);
                         }catch (Exception e){}
                     }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                         listener.onError();
+                        logger.log(Level.SEVERE, "error de conecxion");
                     }
                 });
             }

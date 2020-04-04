@@ -44,9 +44,9 @@ public class LoginPresenterImplement implements LoginPresenter, LoginInteractor.
     }
 
     @Override
-    public void OnSucess(String token, String superUser) {
+    public void OnSucess(String token, int user) {
         if (loginView != null){
-            loginView.navigateTo(token, superUser);
+            loginView.navigateTo(token, user);
             loginView.hideProgress();
         }
     }

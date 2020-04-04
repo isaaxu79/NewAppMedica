@@ -10,7 +10,7 @@ public interface LoginView {
 
     void setPasswordError();
 
-    void navigateTo(String token, String superUser);
+    void navigateTo(String token, int user);
 
     void setLoginError();
 }

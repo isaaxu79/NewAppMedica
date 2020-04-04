@@ -8,7 +8,7 @@ public interface LoginInteractor {
 
         void OnUsernameError();
 
-        void OnSucess(String token, String superUser);
+        void OnSucess(String token, int user);
 
         void onError();
 
